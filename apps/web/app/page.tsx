@@ -272,9 +272,7 @@ export default async function HomePage() {
 							<tbody>
 								{players.slice(0, 20).map((player: any, idx: number) => (
 									<tr key={idx} style={{ 
-										borderBottom: '1px solid #f3f4f6',
-										transition: 'background-color 0.15s',
-										':hover': { backgroundColor: '#fef2f2' }
+										borderBottom: '1px solid #f3f4f6'
 									}}>
 										<td style={{ padding: '14px 12px', fontWeight: 600, color: '#111827' }}>
 											{player.name || player.id || 'Sin nombre'}
@@ -305,7 +303,9 @@ export default async function HomePage() {
 											{player.age ?? '-'}
 										</td>
 										<td style={{ padding: '14px 12px', color: '#4b5563', fontWeight: 500 }}>
-											{(player.ref_club || player.club) ? (player.ref_club || player.club) : (
+											{(player.ref_club || player.club) ? (
+												player.ref_club || player.club
+											) : (
 												<span style={{ color: '#9ca3af', fontStyle: 'italic' }}>Agente libre</span>
 											)}
 										</td>
