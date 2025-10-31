@@ -1,4 +1,4 @@
-import { fetchSpreadsheetTitle } from '../../../lib/googleSheets';
+import { fetchSpreadsheetTitle } from '@/lib/googleSheets';
 
 export async function GET() {
 	try {
