@@ -79,7 +79,26 @@ export async function getMatches(spreadsheetId: string) {
 }
 
 export async function getPlayers(spreadsheetId: string) {
-	return readSheetData(spreadsheetId, 'players');
+	// Intentar primero "players" (minúsculas), luego variaciones comunes
+	try {
+		const data = await readSheetData(spreadsheetId, 'players');
+		if (data.length > 0) return data;
+	} catch {}
+
+	// Probar "JUGADORES" (mayúsculas, nombre en español)
+	try {
+		const data = await readSheetData(spreadsheetId, 'JUGADORES');
+		if (data.length > 0) return data;
+	} catch {}
+
+	// Probar "Jugadores" (capitalizada)
+	try {
+		const data = await readSheetData(spreadsheetId, 'Jugadores');
+		if (data.length > 0) return data;
+	} catch {}
+
+	// Si todo falla, devolver vacío
+	return [];
 }
 
 export async function getStandings(spreadsheetId: string) {
